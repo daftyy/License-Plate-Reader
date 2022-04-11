@@ -45,7 +45,7 @@ def detect_zoom_plate(img, kernel):
     boxed_img = img.copy()
     
     #gets the points of where the classifier detects a plate
-    plate_rects = plate_cascade.detectMultiScale(boxed_img, scaleFactor = 1.2, minNeighbors = 10) #maxSize = (100,100))
+    plate_rects = plate_cascade.detectMultiScale(boxed_img, scaleFactor = 1.2, minNeighbors = 10)
     
     for (x,y,w,h) in plate_rects:
         x_offset = x
