@@ -1,11 +1,11 @@
 import cv2
 import numpy as np
 import matplotlib.pyplot as plt
-from PIL import Image
-import PIL
 
 #reading in the input image
 plate = cv2.imread("polo.webp")
+
+
 
 #function that shows the image
 def display(img, cmap = 'gray'):
@@ -14,13 +14,6 @@ def display(img, cmap = 'gray'):
     ax.imshow(img,cmap = 'gray')
     img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
     cv2.imwrite("boxed.jpg",img)
-
-#need to change color of picture from BGR to RGB
-plate = cv2.cvtColor(plate, cv2.COLOR_BGR2RGB)
-
-#Cascade Classifier where our hundres of samples of license plates are
-plate_cascade = cv2.CascadeClassifier('haarcascade_russian_plate_number.xml')
-
 
 def detect_plate(img):
     
@@ -34,10 +27,6 @@ def detect_plate(img):
         cv2.rectangle(boxed_img, (x,y), (x+w, y+h), (255,0,0), 5)
 
     return boxed_img
-
-result = detect_plate(plate)
-
-
 
 #detects the plate and zooms in on it
 def detect_zoom_plate(img, kernel):
@@ -103,6 +92,14 @@ def get_plate(img):
 
     cv2.imwrite("plate.jpeg", zoom_img)
     return boxed_img
+
+#need to change color of picture from BGR to RGB
+plate = cv2.cvtColor(plate, cv2.COLOR_BGR2RGB)
+
+#Cascade Classifier where our hundres of samples of license plates are
+plate_cascade = cv2.CascadeClassifier('haarcascade_russian_plate_number.xml')
+
+result = detect_plate(plate)
     
 #matrix needed to sharpen the image
 kernel = np.array([[-1,-1,-1],
