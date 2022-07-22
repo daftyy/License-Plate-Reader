@@ -96,7 +96,7 @@ def get_plate(img):
 #need to change color of picture from BGR to RGB
 plate = cv2.cvtColor(plate, cv2.COLOR_BGR2RGB)
 
-#Cascade Classifier where our hundres of samples of license plates are
+#Cascade Classifier where there are hundreds of samples of license plates
 plate_cascade = cv2.CascadeClassifier('haarcascade_russian_plate_number.xml')
 
 result = detect_plate(plate)
